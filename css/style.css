@@ -1,0 +1,529 @@
+:root {
+    --fuenteHeading: 'PT Sans', sans-serif;
+    --fuentaParrafos: 'Open Sans', sans-serif;
+
+    --primario: #3E2EFF;
+    --gris: #979797;
+    --gris-claro: #CBCBCB;
+    --blanco: #ffffff;
+    --negro: #000000;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; /*1 rem = 10px*/
+}
+
+*,*:before, *:after{    /*Hereda del elemento padre (html). Si se usa en otro selector va a heredar de ese selector*/
+
+box-sizing: inherit;
+}
+
+ body{  /*Css para la fuente, tamaño e interlineado*/
+    font-family: var(--fuentaParrafos);
+    font-size: 1.6rem;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+ }
+
+ /**Globales**/
+
+ .contenedor {
+    width: min(90%, 120rem);
+    margin: 25px auto; /*Centrar el contenido horizontalmente ne la pantalla, centrarse por si mismo*/
+ }
+
+
+*{
+    text-decoration: none;  /*Le quita el interlineado a los enlaces*/
+    
+}
+
+h1,h2,h3,h4 {   
+    font-family: var(--fuenteHeading);  /*Fuente para los textos headers, aplica para todos los H´s*/
+    line-height: 4.2;
+}
+
+h1{     
+    font-size: 1.8rem;  /*Tamaño de fuente*/
+}
+
+h2{
+    font-size: 3rem;    /*Tamaño de fuente*/
+    margin: 5px;
+    padding: 13px;
+}
+
+h3{
+    font-size: 3.2rem;  /*Tamaño de fuente*/
+}
+
+h4{
+    font-size: 2.3rem;  /*Tamaño de fuente*/
+}
+
+img{
+    max-width: 100%;    /*Tamaño máximo de la imagen de fondo*/
+    max-height: 450px;
+    top: 600px;
+}
+
+/**Utilidades**/
+
+.no-margin{
+    margin: 0;  /*Quita los margenes definidos por el navegador*/
+}
+
+.no-padding{
+    padding: 0; /*Quita el padding definidos por el navegador*/
+}
+
+.centrar-texto{
+    text-align: center; /*Centra el texto*/
+}
+
+/**Header**/
+.header{    /*Posiciona una imagen el el header*/
+    background-color: #ffffff;
+    height: 5rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; /*Centra la imagen si se cambia de tamaño la ventana del navegador*/
+}
+
+#header__titulo{
+    text-align: center;
+    color: var(--gris);
+    margin: 0px auto;
+    position: relative;
+    top: auto;
+}
+
+.iconos{
+    width: 2.3rem;
+}
+
+.header__texto{
+    text-align: justify;
+    color: var(--negro);
+    right: auto;
+    margin: 50px;
+}
+
+.header__texto:last-of-type{
+    border: none;
+    margin-bottom: 0;
+}
+
+@media(max-width: 768px){
+    .header__texto{
+        font-size: 1.6rem;
+        margin: 3rem;
+        display: block;
+        
+    }
+}
+
+.barra{
+    margin: 0 auto;
+    padding: 1.2rem 2%;
+}
+
+@media(min-width: 768px){
+    .barra{
+        display: flex;  /*Coloca un elemento frento al otro(Logo texto-enlaces de menu)*/
+        justify-content: space-between; /*Alinear horizontalmente*/
+        align-items: center;    /*Centrado verticalmente*/
+    }
+}
+
+/*Cambiar el tamaño del logo de la imagen*/
+
+.logo{
+    color: var(--blanco);
+}
+
+#logo__img{
+    padding: 4px;
+    max-height: 48px;
+}
+.logo__nombre{
+    font-weight: 400;
+}
+.logo__bold{
+    font-weight: 700;
+}
+
+
+/*Menu*/
+@media(min-width: 768px){
+    .navegacion{
+        display: flex;  /*Pone los elementos uno frente al otro*/
+        gap: 2rem;
+    }
+}
+
+.navegacion__enlace{
+    display: block; /*Los elementos no esten juntos, esten uno debajo del otro*/
+    text-align: center; /*Centrado horizontalmente*/
+    font-size: 1.8rem;  /*Tamaño de la letra*/
+    color: var(--gris);
+}
+
+.navegacion{
+    overflow: hidden;
+    background-color: #302f2f;
+}
+
+.navegacion a{
+    float: left;
+    display: block;
+    color: #353535;
+    text-align: center;
+    padding: 4px 6px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: system-ui;
+}
+
+.navegacion a:hover{
+    background-color: #ddd;
+    color: #000;
+    border-radius: 5px;
+}
+
+.navegacion a.active{
+    background-color: #ffa556;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.navegacion .icon{
+    display: none;
+}
+
+@media screen and (max-width: 600px){
+    .navegacion a:not(:first-child){
+        display: none;
+    }
+    .navegacion a.icon{
+        float: right;
+        display: block;
+        padding: 22px 24px;
+    }
+    .navegacion a.icon i{
+        color: #ffffff;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .navegacion.responsive {
+        position: relative;
+    }
+    .navegacion.responsive .icon{
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .navegacion.responsive a{
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+/*Primer Carrusel pagina principal*/
+.mySlides{
+    display: none;
+}
+
+img{
+    vertical-align: middle;
+}
+
+.slideShow-container{
+    max-width: 50px;
+    position: relative;
+    margin: auto;
+}
+
+.dot{
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active{
+    background-color: #717171;
+}
+
+.fade{
+    animation-name: fade;
+    animation-duration: 10.5s;
+}
+
+@keyframes fade{
+    from{opacity: .4;}
+    to {opacity: 2;}
+}
+
+@media(min-width: 768px){
+    .contenido-principal{
+        display: grid;  /*Poder posicionar los elementos*/
+        grid-template-columns:22fr 0fr ;    /*Definir nuestro diseño, toma en cuenta 2terceras partes y 1tercera parte*/
+        column-gap: 1rem;
+    }
+}
+
+.entrada{
+    border-bottom: 1px solid var(--gris);
+    margin-bottom: 2rem;
+}
+
+.entrada .entrada__imagen img{
+    width: 60%;
+    margin: 16px 20%;
+}
+
+.entrada:last-of-type{
+    border: none;
+    margin-bottom: 0;
+}
+
+.boton{
+    display: block;
+    font-family: var(--fuenteHeading);
+    color: var(--blanco);
+    text-align: center;
+    padding: 1rem 3rem;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+@media(min-width: 768px) {
+    .boton{
+        display: inline-block;
+    }
+}
+
+.boton--primario{
+    background-color: #646464;
+    border-radius: 5px;
+}
+ 
+.main__img{
+    width: 30%;
+    margin-right: auto;
+    margin-left: auto;
+}
+/*Footer*/
+.footer{
+    display: block;
+    background-color: var(--gris-claro);
+    padding-bottom: 0;
+    margin-top: auto;
+}
+
+.footer p{
+    text-align: center;
+}
+.footer p.info__titulo{
+    font-size: 20px;
+    color: #ff5e00;
+}
+.footer p.info__texto{
+    font-size: 15px;
+    color: #222ea0d5;
+}
+
+.footer a.systemDesign{
+    padding-left: 75%;
+    text-decoration: none;
+    color: #717171;
+}
+
+@media(max-width: 600px){
+    .footer a.systemDesign{
+        padding-left: 30%;
+    }
+}
+
+/*Servicios*/
+.main__cards{
+    padding: 30px 50px;
+}
+
+/*Carrusell*/
+.carousel-item{
+    width: 100%;
+    height: 450px;
+}
+
+@media(max-width: 600px){
+    .carousel-item{
+        height: 60%;
+    }
+}
+
+/*Cartas de servicio*/
+.main__card{
+    margin-left: 15%;
+    margin-right: 5%;
+}
+
+.card{
+    position: relative;
+    width: 300px;
+    height: 350px;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    bottom: 60px;
+    display: inline-table;
+}
+
+@media(max-width: 768px){
+
+    .main__card{
+        margin-left: 20px;
+    }
+
+}
+
+.card .face{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .5s;
+}
+
+.card .front{
+  transform: perspective(600px) rotateY(0deg);
+  box-shadow: 0 5px 10px #000;  
+}
+
+.card .front .card__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card .front h4{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card .back{
+    transform: perspective(600px) rotateY(180deg);
+    background: rgb(3, 35, 54);
+    padding: 15px;
+    color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 13px;
+    font-family: system-ui;
+    box-shadow: 0 5px 10px #000;
+}
+
+.card .back .p{
+    bottom: 15px;
+}
+
+.card .back .link{
+    border-top: solid 1px #f3f3f3;
+    height: 50px;
+    line-height: 50px;
+}
+
+.card .back .link{
+    color: #f3f3f3;
+}
+
+.card:hover .front{
+    transform: perspective(600px) rotateY(180deg);
+}
+
+.card:hover .back{
+    transform: perspective(600px) rotateY(360deg);
+}
+
+/*Cartas de contactos y ubicaciones*/
+
+  .main__ubicaciones{
+    margin-left: 15%;
+  }
+
+  .main__contactos{
+    margin-left: 25%;
+  }
+
+  .tarjetas {
+    position: relative;
+    max-width: 250px;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    text-align: center;
+    font-family: arial;
+    bottom: 20px;
+    display: inline-table;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  @media(max-width: 600px){
+    .tarjetas{
+        max-width: 260px;
+        margin-left: 3%;
+        display: block;
+    }
+
+    .main__contactos{
+        margin-left: 16%;
+      }
+  }
+  
+  .title {
+    color: grey;
+    font-size: 14px;
+    margin: 17px;
+    text-align: center;
+  }
+  
+  button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
